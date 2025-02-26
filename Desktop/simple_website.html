@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Count and GIF</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+            color: red;
+        }
+
+        #count {
+            font-size: 48px;
+            margin: 20px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="count">7 days 0 hours 0 minutes 0 seconds</div>
+
+    <img src="https://cdn.discordapp.com/attachments/1338007531800367196/1344121344111017996/5X3Ft8LFLS.gif?ex=67bfc20d&is=67be708d&hm=4b8608d51084b9400df5c8e27349ea6c1b5827145479a007a363322c5093c1e3&.gif" alt="GIF">
+    <div style="color: red; font-size: 48px;">take your time</div>
+
+
+    <script>
+        let countdown = 604800; // 7 days in seconds
+        const countElement = document.getElementById('count');
+
+        function updateCountdown() {
+            const days = Math.floor(countdown / (24 * 60 * 60));
+            const hours = Math.floor((countdown % (24 * 60 * 60)) / (60 * 60));
+            const minutes = Math.floor((countdown % (60 * 60)) / 60);
+            const seconds = countdown % 60;
+
+            countElement.innerText = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+
+            if (countdown > 0) {
+                countdown--;
+            } else {
+                clearInterval(timer);
+            }
+        }
+
+        const timer = setInterval(updateCountdown, 1000);
+    </script>
+
+
+    <script>
+        function incrementCount() {
+            const countElement = document.getElementById('count');
+            let count = parseInt(countElement.innerText);
+            countElement.innerText = count + 1;
+        }
+    </script>
+</body>
+</html>
